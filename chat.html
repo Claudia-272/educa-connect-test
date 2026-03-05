@@ -1,0 +1,63 @@
+    <!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Educa-Connect • Chat</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="chat">
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="sidebarTop">
+        <div class="brand mini">
+          <div class="logo">EC</div>
+          <div>
+            <div class="title">Educa-Connect</div>
+            <div class="muted tiny" id="whoami"></div>
+          </div>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <a class="navItem" href="dashboard.html">🏠 Dashboard</a>
+        <a class="navItem active" href="chat.html">💬 Mensagens</a>
+        <a class="navItem" href="calendar.html">📅 Agenda</a>
+        <a class="navItem" href="profile.html">👤 Perfil</a>
+        <a class="navItem" href="admin.html" id="adminLink" hidden>🛠️ Admin</a>
+        <button class="navItem danger" id="btnLogout">⎋ Sair</button>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <h2>Mensagens</h2>
+          <p class="muted">Chat 1:1 com histórico</p>
+        </div>
+      </header>
+
+      <section class="panel">
+        <div class="formGrid">
+          <div class="field">
+            <label>Conversar com</label>
+            <select id="chatPeer"></select>
+            <div class="muted tiny">Dica: escolhe o destinatário para carregar a conversa.</div>
+          </div>
+        </div>
+
+        <div class="chatBox" id="chatBox"></div>
+
+        <form class="chatComposer" id="chatForm">
+          <input id="chatInput" type="text" placeholder="Escreve a tua mensagem..." />
+          <button class="btn primary" type="submit">Enviar</button>
+        </form>
+
+        <div class="alert error" id="chatErr" hidden></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

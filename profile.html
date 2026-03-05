@@ -1,0 +1,68 @@
+    <!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Educa-Connect • Perfil</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="profile">
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="sidebarTop">
+        <div class="brand mini">
+          <div class="logo">EC</div>
+          <div>
+            <div class="title">Educa-Connect</div>
+            <div class="muted tiny" id="whoami"></div>
+          </div>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <a class="navItem" href="dashboard.html">🏠 Dashboard</a>
+        <a class="navItem" href="chat.html">💬 Mensagens</a>
+        <a class="navItem" href="calendar.html">📅 Agenda</a>
+        <a class="navItem active" href="profile.html">👤 Perfil</a>
+        <a class="navItem" href="admin.html" id="adminLink" hidden>🛠️ Admin</a>
+        <button class="navItem danger" id="btnLogout">⎋ Sair</button>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <h2>Perfil</h2>
+          <p class="muted">Os teus dados e preferências</p>
+        </div>
+      </header>
+
+      <section class="panel">
+        <form id="profileForm" class="formGrid">
+          <div class="field">
+            <label>Nome</label>
+            <input id="pName" type="text" />
+          </div>
+          <div class="field">
+            <label>Email</label>
+            <input id="pEmail" type="email" disabled />
+          </div>
+          <div class="field">
+            <label>Papel</label>
+            <input id="pRole" type="text" disabled />
+          </div>
+
+          <div class="row">
+            <button class="btn primary" type="submit">Guardar</button>
+          </div>
+
+          <div class="alert ok" id="pOk" hidden></div>
+          <div class="alert error" id="pErr" hidden></div>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

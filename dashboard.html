@@ -1,0 +1,101 @@
+    <!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Educa-Connect • Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="dashboard">
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="sidebarTop">
+        <div class="brand mini">
+          <div class="logo">EC</div>
+          <div>
+            <div class="title">Educa-Connect</div>
+            <div class="muted tiny" id="whoami"></div>
+          </div>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <a class="navItem active" href="dashboard.html">🏠 Dashboard</a>
+        <a class="navItem" href="chat.html">💬 Mensagens</a>
+        <a class="navItem" href="calendar.html">📅 Agenda</a>
+        <a class="navItem" href="profile.html">👤 Perfil</a>
+        <a class="navItem" href="admin.html" id="adminLink" hidden>🛠️ Admin</a>
+        <button class="navItem danger" id="btnLogout">⎋ Sair</button>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <h2 id="greeting">Dashboard</h2>
+          <p class="muted" id="subtitle"></p>
+        </div>
+        <div class="pill" id="rolePill"></div>
+      </header>
+
+      <section class="cards">
+        <div class="infoCard">
+          <h3>Atalhos</h3>
+          <div class="row wrap">
+            <a class="btn ghost" href="chat.html">Abrir chat</a>
+            <a class="btn ghost" href="calendar.html">Ver agenda</a>
+            <a class="btn ghost" href="profile.html">Editar perfil</a>
+          </div>
+        </div>
+
+        <div class="infoCard">
+          <h3>Próximas reuniões</h3>
+          <div id="nextMeetings" class="muted">A carregar…</div>
+        </div>
+
+        <div class="infoCard">
+          <h3>Feedbacks & Avaliações</h3>
+          <div id="feedbackSummary" class="muted">A carregar…</div>
+        </div>
+      </section>
+
+      <section class="panel" id="feedbackPanel">
+        <div class="panelHeader">
+          <h3 id="fbTitle">Feedbacks</h3>
+          <p class="muted tiny" id="fbHint"></p>
+        </div>
+
+        <!-- Form (teacher/supervisor) -->
+        <form id="fbForm" class="formGrid" hidden>
+          <div class="field">
+            <label>Aluno</label>
+            <select id="fbStudent"></select>
+          </div>
+          <div class="field">
+            <label>Título</label>
+            <input id="fbTitleInput" type="text" placeholder="Ex: Avaliação intermédia" />
+          </div>
+          <div class="field">
+            <label>Nota (opcional)</label>
+            <input id="fbGrade" type="text" placeholder="Ex: 16/20" />
+          </div>
+          <div class="field full">
+            <label>Mensagem</label>
+            <textarea id="fbMessage" rows="4" placeholder="Feedback detalhado..."></textarea>
+          </div>
+          <div class="row">
+            <button class="btn primary" type="submit">Publicar feedback</button>
+          </div>
+          <div class="alert ok" id="fbOk" hidden></div>
+          <div class="alert error" id="fbErr" hidden></div>
+        </form>
+
+        <!-- List -->
+        <div id="fbList" class="list"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

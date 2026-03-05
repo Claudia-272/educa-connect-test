@@ -1,0 +1,85 @@
+    <!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Educa-Connect • Agenda</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="calendar">
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="sidebarTop">
+        <div class="brand mini">
+          <div class="logo">EC</div>
+          <div>
+            <div class="title">Educa-Connect</div>
+            <div class="muted tiny" id="whoami"></div>
+          </div>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <a class="navItem" href="dashboard.html">🏠 Dashboard</a>
+        <a class="navItem" href="chat.html">💬 Mensagens</a>
+        <a class="navItem active" href="calendar.html">📅 Agenda</a>
+        <a class="navItem" href="profile.html">👤 Perfil</a>
+        <a class="navItem" href="admin.html" id="adminLink" hidden>🛠️ Admin</a>
+        <button class="navItem danger" id="btnLogout">⎋ Sair</button>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <h2>Agenda</h2>
+          <p class="muted">Marca reuniões e acompanha eventos</p>
+        </div>
+      </header>
+
+      <section class="panel">
+        <div class="panelHeader">
+          <h3>Agendar reunião</h3>
+          <p class="muted tiny">A reunião aparece para todos os participantes.</p>
+        </div>
+
+        <form id="eventForm" class="formGrid">
+          <div class="field">
+            <label>Data</label>
+            <input id="eDate" type="date" />
+          </div>
+          <div class="field">
+            <label>Hora</label>
+            <input id="eTime" type="time" />
+          </div>
+          <div class="field full">
+            <label>Descrição</label>
+            <input id="eDesc" type="text" placeholder="Ex: Reunião de acompanhamento de estágio" />
+          </div>
+          <div class="field full">
+            <label>Participantes</label>
+            <div id="participants" class="chips"></div>
+            <div class="muted tiny">Seleciona 1+ pessoas (aluno/prof/supervisor/admin).</div>
+          </div>
+
+          <div class="row">
+            <button class="btn primary" type="submit">Criar evento</button>
+          </div>
+
+          <div class="alert ok" id="eOk" hidden></div>
+          <div class="alert error" id="eErr" hidden></div>
+        </form>
+      </section>
+
+      <section class="panel">
+        <div class="panelHeader">
+          <h3>Próximos eventos</h3>
+        </div>
+        <div id="eventList" class="list"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

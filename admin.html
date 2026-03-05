@@ -1,0 +1,109 @@
+    <!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Educa-Connect • Admin</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="admin">
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="sidebarTop">
+        <div class="brand mini">
+          <div class="logo">EC</div>
+          <div>
+            <div class="title">Educa-Connect</div>
+            <div class="muted tiny" id="whoami"></div>
+          </div>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <a class="navItem" href="dashboard.html">🏠 Dashboard</a>
+        <a class="navItem" href="chat.html">💬 Mensagens</a>
+        <a class="navItem" href="calendar.html">📅 Agenda</a>
+        <a class="navItem" href="profile.html">👤 Perfil</a>
+        <a class="navItem active" href="admin.html">🛠️ Admin</a>
+        <button class="navItem danger" id="btnLogout">⎋ Sair</button>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <h2>Administração</h2>
+          <p class="muted">Gerir utilizadores e pedidos de acesso</p>
+        </div>
+      </header>
+
+      <section class="panel">
+        <div class="panelHeader">
+          <h3>Criar utilizador</h3>
+          <p class="muted tiny">Cria contas para alunos/professores/supervisores/admin.</p>
+        </div>
+
+        <form id="createUserForm" class="formGrid">
+          <div class="field">
+            <label>Nome</label>
+            <input id="cuName" type="text" placeholder="Ex: Joana Silva" />
+          </div>
+          <div class="field">
+            <label>Email</label>
+            <input id="cuEmail" type="email" placeholder="ex: joana@escola.pt" />
+          </div>
+          <div class="field">
+            <label>Password</label>
+            <input id="cuPass" type="text" placeholder="ex: 123456" />
+          </div>
+          <div class="field">
+            <label>Papel</label>
+            <select id="cuRole">
+              <option value="student">student</option>
+              <option value="teacher">teacher</option>
+              <option value="supervisor">supervisor</option>
+              <option value="admin">admin</option>
+            </select>
+          </div>
+          <div class="row">
+            <button class="btn primary" type="submit">Criar</button>
+          </div>
+          <div class="alert ok" id="cuOk" hidden></div>
+          <div class="alert error" id="cuErr" hidden></div>
+        </form>
+      </section>
+
+      <section class="panel">
+        <div class="panelHeader">
+          <h3>Utilizadores</h3>
+          <p class="muted tiny">Edita nome/papel e remove utilizadores.</p>
+        </div>
+        <div class="tableWrap">
+          <table class="table" id="userTable">
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Papel</th>
+                <th class="right">Ações</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <div class="alert error" id="adminErr" hidden></div>
+      </section>
+
+      <section class="panel">
+        <div class="panelHeader">
+          <h3>Pedidos / Contactos</h3>
+          <p class="muted tiny">Mensagens de utilizadores sem conta.</p>
+        </div>
+        <div id="contactList" class="list"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

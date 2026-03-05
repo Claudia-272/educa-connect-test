@@ -1,0 +1,59 @@
+    <!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Educa-Connect • Contactar Admin</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="contact">
+  <div class="shell">
+    <div class="card">
+      <div class="brand">
+        <div class="logo">EC</div>
+        <div>
+          <h1>Contactar Administrador</h1>
+          <p class="muted">Se não tens conta, envia um pedido de acesso.</p>
+        </div>
+      </div>
+
+      <form id="contactForm" class="formGrid">
+        <div class="field">
+          <label>Nome</label>
+          <input id="cName" type="text" placeholder="O teu nome" />
+        </div>
+        <div class="field">
+          <label>Email</label>
+          <input id="cEmail" type="email" placeholder="O teu email" />
+        </div>
+        <div class="field">
+          <label>Quero entrar como</label>
+          <select id="cRole">
+            <option value="student">Aluno</option>
+            <option value="teacher">Professor</option>
+            <option value="supervisor">Supervisor</option>
+          </select>
+        </div>
+        <div class="field full">
+          <label>Mensagem</label>
+          <textarea id="cMsg" rows="5" placeholder="Escreve aqui o teu pedido (ex: turma, instituição, estágio, etc.)"></textarea>
+        </div>
+
+        <div class="row">
+          <button class="btn primary" type="submit">Enviar</button>
+          <a class="btn ghost" href="index.html">Voltar ao login</a>
+        </div>
+
+        <div class="alert ok" id="cOk" hidden></div>
+        <div class="alert error" id="cErr" hidden></div>
+      </form>
+    </div>
+
+    <footer class="foot muted">
+      <span>O admin verá este pedido no painel “Admin”.</span>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

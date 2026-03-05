@@ -1,0 +1,69 @@
+    <!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Educa-Connect • Login</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="login">
+  <div class="shell">
+    <div class="card">
+      <div class="brand">
+        <div class="logo">EC</div>
+        <div>
+          <h1>Educa-Connect</h1>
+          <p class="muted">Interação professor–estudante e supervisor–estudante</p>
+        </div>
+      </div>
+
+      <div class="alert error" id="loginError" hidden></div>
+
+      <div class="grid2">
+        <div class="field">
+          <label>Email</label>
+          <input id="email" type="email" placeholder="ex: aluno@educa.local" autocomplete="username" />
+        </div>
+        <div class="field">
+          <label>Password</label>
+          <input id="password" type="password" placeholder="••••••••" autocomplete="current-password" />
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Entrar como</label>
+        <select id="role">
+          <option value="" selected disabled>Seleciona o teu papel</option>
+          <option value="student">Aluno</option>
+          <option value="teacher">Professor</option>
+          <option value="supervisor">Supervisor</option>
+          <option value="admin">Administrador</option>
+        </select>
+      </div>
+
+      <div class="row">
+        <button class="btn primary" id="btnLogin">Entrar</button>
+        <a class="btn ghost" href="contact.html">Não tenho conta</a>
+      </div>
+
+      <div class="divider"></div>
+
+      <details class="help">
+        <summary>Contas de teste (seed) ✅</summary>
+        <ul class="muted">
+          <li><b>admin@educa.local</b> / admin123</li>
+          <li><b>prof@educa.local</b> / prof123</li>
+          <li><b>sup@educa.local</b> / sup123</li>
+          <li><b>aluno@educa.local</b> / aluno123</li>
+        </ul>
+      </details>
+    </div>
+
+    <footer class="foot muted">
+      <span>© <span id="year"></span> Educa-Connect</span>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

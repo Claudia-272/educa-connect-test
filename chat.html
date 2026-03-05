@@ -21,36 +21,36 @@
 
       <nav class="nav">
         <a class="navItem" href="dashboard.html">🏠 Dashboard</a>
-        <a class="navItem active" href="chat.html">💬 Mensagens</a>
-        <a class="navItem" href="calendar.html">📅 Agenda</a>
-        <a class="navItem" href="profile.html">👤 Perfil</a>
+        <a class="navItem active" href="chat.html">💬 Chat</a>
+        <a class="navItem" href="calendar.html">📅 Calendar</a>
+        <a class="navItem" href="profile.html">👤 Profile</a>
         <a class="navItem" href="admin.html" id="adminLink" hidden>🛠️ Admin</a>
-        <button class="navItem danger" id="btnLogout">⎋ Sair</button>
+        <button class="navItem danger" id="btnLogout">⎋ Logout</button>
       </nav>
     </aside>
 
     <main class="main">
       <header class="topbar">
         <div>
-          <h2>Mensagens</h2>
-          <p class="muted">Chat 1:1 com histórico</p>
+          <h2>Messages</h2>
+          <p class="muted">Chat 1:1 history</p>
         </div>
       </header>
 
       <section class="panel">
         <div class="formGrid">
           <div class="field">
-            <label>Conversar com</label>
+            <label>Chat peer</label>
             <select id="chatPeer"></select>
-            <div class="muted tiny">Dica: escolhe o destinatário para carregar a conversa.</div>
+            <div class="muted tiny">Tip: choose your peer to see chat history.</div>
           </div>
         </div>
 
         <div class="chatBox" id="chatBox"></div>
 
         <form class="chatComposer" id="chatForm">
-          <input id="chatInput" type="text" placeholder="Escreve a tua mensagem..." />
-          <button class="btn primary" type="submit">Enviar</button>
+          <input id="chatInput" type="text" placeholder="Write your message..." />
+          <button class="btn primary" type="submit">Submit</button>
         </form>
 
         <div class="alert error" id="chatErr" hidden></div>

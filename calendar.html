@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>Educa-Connect • Agenda</title>
+  <title>Educa-Connect • Calendar</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body data-page="calendar">
@@ -21,49 +21,49 @@
 
       <nav class="nav">
         <a class="navItem" href="dashboard.html">🏠 Dashboard</a>
-        <a class="navItem" href="chat.html">💬 Mensagens</a>
-        <a class="navItem active" href="calendar.html">📅 Agenda</a>
-        <a class="navItem" href="profile.html">👤 Perfil</a>
+        <a class="navItem" href="chat.html">💬 Chat</a>
+        <a class="navItem active" href="calendar.html">📅 Calendar</a>
+        <a class="navItem" href="profile.html">👤 Profile</a>
         <a class="navItem" href="admin.html" id="adminLink" hidden>🛠️ Admin</a>
-        <button class="navItem danger" id="btnLogout">⎋ Sair</button>
+        <button class="navItem danger" id="btnLogout">⎋ Logout</button>
       </nav>
     </aside>
 
     <main class="main">
       <header class="topbar">
         <div>
-          <h2>Agenda</h2>
-          <p class="muted">Marca reuniões e acompanha eventos</p>
+          <h2>Calendar</h2>
+          <p class="muted">Book your meetings and follow your events</p>
         </div>
       </header>
 
       <section class="panel">
         <div class="panelHeader">
-          <h3>Agendar reunião</h3>
-          <p class="muted tiny">A reunião aparece para todos os participantes.</p>
+          <h3>Book a meeting</h3>
+          <p class="muted tiny">All participants have access to the meeting.</p>
         </div>
 
         <form id="eventForm" class="formGrid">
           <div class="field">
-            <label>Data</label>
+            <label>Date</label>
             <input id="eDate" type="date" />
           </div>
           <div class="field">
-            <label>Hora</label>
+            <label>Time</label>
             <input id="eTime" type="time" />
           </div>
           <div class="field full">
-            <label>Descrição</label>
-            <input id="eDesc" type="text" placeholder="Ex: Reunião de acompanhamento de estágio" />
+            <label>Description</label>
+            <input id="eDesc" type="text" placeholder="e.g. Clinical internship follow-up meeting." />
           </div>
           <div class="field full">
-            <label>Participantes</label>
+            <label>Participants</label>
             <div id="participants" class="chips"></div>
-            <div class="muted tiny">Seleciona 1+ pessoas (aluno/prof/supervisor/admin).</div>
+            <div class="muted tiny">Select 1+ person (student/prof/supervisor/admin).</div>
           </div>
 
           <div class="row">
-            <button class="btn primary" type="submit">Criar evento</button>
+            <button class="btn primary" type="submit">Submit event</button>
           </div>
 
           <div class="alert ok" id="eOk" hidden></div>
@@ -73,7 +73,7 @@
 
       <section class="panel">
         <div class="panelHeader">
-          <h3>Próximos eventos</h3>
+          <h3>Upcoming events</h3>
         </div>
         <div id="eventList" class="list"></div>
       </section>

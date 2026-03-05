@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>Educa-Connect • Perfil</title>
+  <title>Educa-Connect • Profile</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body data-page="profile">
@@ -21,26 +21,26 @@
 
       <nav class="nav">
         <a class="navItem" href="dashboard.html">🏠 Dashboard</a>
-        <a class="navItem" href="chat.html">💬 Mensagens</a>
-        <a class="navItem" href="calendar.html">📅 Agenda</a>
-        <a class="navItem active" href="profile.html">👤 Perfil</a>
+        <a class="navItem" href="chat.html">💬 Chat</a>
+        <a class="navItem" href="calendar.html">📅 Calendar</a>
+        <a class="navItem active" href="profile.html">👤 Profile</a>
         <a class="navItem" href="admin.html" id="adminLink" hidden>🛠️ Admin</a>
-        <button class="navItem danger" id="btnLogout">⎋ Sair</button>
+        <button class="navItem danger" id="btnLogout">⎋ Logout</button>
       </nav>
     </aside>
 
     <main class="main">
       <header class="topbar">
         <div>
-          <h2>Perfil</h2>
-          <p class="muted">Os teus dados e preferências</p>
+          <h2>Profile</h2>
+          <p class="muted">Your data and preferences</p>
         </div>
       </header>
 
       <section class="panel">
         <form id="profileForm" class="formGrid">
           <div class="field">
-            <label>Nome</label>
+            <label>Name</label>
             <input id="pName" type="text" />
           </div>
           <div class="field">
@@ -48,12 +48,12 @@
             <input id="pEmail" type="email" disabled />
           </div>
           <div class="field">
-            <label>Papel</label>
+            <label>Role</label>
             <input id="pRole" type="text" disabled />
           </div>
 
           <div class="row">
-            <button class="btn primary" type="submit">Guardar</button>
+            <button class="btn primary" type="submit">Submit</button>
           </div>
 
           <div class="alert ok" id="pOk" hidden></div>

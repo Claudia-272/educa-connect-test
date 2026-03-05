@@ -21,11 +21,11 @@
 
       <nav class="nav">
         <a class="navItem active" href="dashboard.html">🏠 Dashboard</a>
-        <a class="navItem" href="chat.html">💬 Mensagens</a>
-        <a class="navItem" href="calendar.html">📅 Agenda</a>
-        <a class="navItem" href="profile.html">👤 Perfil</a>
+        <a class="navItem" href="chat.html">💬 Chat</a>
+        <a class="navItem" href="calendar.html">📅 Calendar</a>
+        <a class="navItem" href="profile.html">👤 Profile</a>
         <a class="navItem" href="admin.html" id="adminLink" hidden>🛠️ Admin</a>
-        <button class="navItem danger" id="btnLogout">⎋ Sair</button>
+        <button class="navItem danger" id="btnLogout">⎋ Logout</button>
       </nav>
     </aside>
 
@@ -40,22 +40,22 @@
 
       <section class="cards">
         <div class="infoCard">
-          <h3>Atalhos</h3>
+          <h3>Shortcuts</h3>
           <div class="row wrap">
-            <a class="btn ghost" href="chat.html">Abrir chat</a>
-            <a class="btn ghost" href="calendar.html">Ver agenda</a>
-            <a class="btn ghost" href="profile.html">Editar perfil</a>
+            <a class="btn ghost" href="chat.html">Open chat</a>
+            <a class="btn ghost" href="calendar.html">See calendar</a>
+            <a class="btn ghost" href="profile.html">Profile edition</a>
           </div>
         </div>
 
         <div class="infoCard">
-          <h3>Próximas reuniões</h3>
-          <div id="nextMeetings" class="muted">A carregar…</div>
+          <h3>Upcoming meetings</h3>
+          <div id="nextMeetings" class="muted">Loading…</div>
         </div>
 
         <div class="infoCard">
-          <h3>Feedbacks & Avaliações</h3>
-          <div id="feedbackSummary" class="muted">A carregar…</div>
+          <h3>Feedbacks & Summary</h3>
+          <div id="feedbackSummary" class="muted">Loading…</div>
         </div>
       </section>
 
@@ -68,23 +68,23 @@
         <!-- Form (teacher/supervisor) -->
         <form id="fbForm" class="formGrid" hidden>
           <div class="field">
-            <label>Aluno</label>
+            <label>Student</label>
             <select id="fbStudent"></select>
           </div>
           <div class="field">
-            <label>Título</label>
-            <input id="fbTitleInput" type="text" placeholder="Ex: Avaliação intermédia" />
+            <label>Title</label>
+            <input id="fbTitleInput" type="text" placeholder="e.g. Intercalar assessment" />
           </div>
           <div class="field">
-            <label>Nota (opcional)</label>
-            <input id="fbGrade" type="text" placeholder="Ex: 16/20" />
+            <label>Grade (optional)</label>
+            <input id="fbGrade" type="text" placeholder="e.g. 16/20" />
           </div>
           <div class="field full">
-            <label>Mensagem</label>
-            <textarea id="fbMessage" rows="4" placeholder="Feedback detalhado..."></textarea>
+            <label>Message</label>
+            <textarea id="fbMessage" rows="4" placeholder="Feedback details..."></textarea>
           </div>
           <div class="row">
-            <button class="btn primary" type="submit">Publicar feedback</button>
+            <button class="btn primary" type="submit">Submit feedback</button>
           </div>
           <div class="alert ok" id="fbOk" hidden></div>
           <div class="alert error" id="fbErr" hidden></div>

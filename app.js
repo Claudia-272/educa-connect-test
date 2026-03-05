@@ -1,5 +1,5 @@
 /* Educa-Connect MVP (LocalStorage)
-   - Sem Firebase (a seguir migramos para Auth/Firestore mantendo UI)
+   - Sem Firebase (a seguir migrar para Auth/Firestore mantendo UI)
 */
 (() => {
   const LS_KEY = "ec_db_v1";
@@ -7,10 +7,10 @@
 
   const roleLabel = (r) =>
     ({
-      student: "Aluno",
+      student: "Student",
       teacher: "Professor",
       supervisor: "Supervisor",
-      admin: "Administrador",
+      admin: "Administrator",
     })[r] || r;
 
   const nowISO = () => new Date().toISOString();
@@ -50,15 +50,15 @@
         },
         {
           id: profId,
-          name: "Prof. Marta",
+          name: "Prof. Maria",
           email: "prof@educa.local",
           password: "prof123",
-          role: "teacher",
+          role: "professor",
           createdAt: nowISO(),
         },
         {
           id: supId,
-          name: "Supervisor Nuno",
+          name: "Supervisor Manuel",
           email: "sup@educa.local",
           password: "sup123",
           role: "supervisor",
@@ -68,7 +68,7 @@
           id: studentId,
           name: "Aluno João",
           email: "aluno@educa.local",
-          password: "aluno123",
+          password: "student123",
           role: "student",
           createdAt: nowISO(),
         },

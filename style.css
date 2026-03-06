@@ -360,3 +360,51 @@ input:focus,select:focus,textarea:focus{
   .formGrid{ grid-template-columns:1fr; }
   .grid2{ grid-template-columns:1fr; }
 }
+/* --- Mobile polish --- */
+@media (max-width: 980px){
+  .sidebar{
+    position: sticky;
+    top: 0;
+    padding: 12px 12px;
+  }
+
+  .nav{
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .navItem{
+    flex: 1 1 calc(50% - 8px);
+    justify-content: center;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .navItem.danger{
+    flex: 1 1 100%;
+  }
+
+  .main{
+    padding: 14px;
+  }
+
+  .chatBox{
+    height: 55vh; /* usa altura do ecrã */
+  }
+}
+
+@media (max-width: 520px){
+  .navItem{
+    flex: 1 1 100%;
+  }
+
+  .topbar{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .pill{
+    align-self: flex-start;
+  }
+}

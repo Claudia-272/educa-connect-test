@@ -1,5 +1,5 @@
 /* Educa-Connect MVP (LocalStorage)
-   - Sem Firebase (a seguir migrar para Auth/Firestore mantendo UI)
+   - Without Firebase (to do next: migration to Auth/Firestore, still use UI)
 */
 (() => {
   const LS_KEY = "ec_db_v1";
@@ -50,7 +50,7 @@
         },
         {
           id: profId,
-          name: "Prof. Maria",
+          name: "Professor Serafim",
           email: "prof@educa.local",
           password: "prof123",
           role: "professor",
@@ -58,7 +58,7 @@
         },
         {
           id: supId,
-          name: "Supervisor Manuel",
+          name: "Supervisor Cláudia",
           email: "sup@educa.local",
           password: "sup123",
           role: "supervisor",
@@ -66,8 +66,8 @@
         },
         {
           id: studentId,
-          name: "Aluno João",
-          email: "aluno@educa.local",
+          name: "Student João",
+          email: "student@educa.local",
           password: "student123",
           role: "student",
           createdAt: nowISO(),
@@ -92,10 +92,10 @@
       id: uid(),
       fromId: profId,
       toStudentId: studentId,
-      title: "Bem-vindo ao estágio",
+      title: "Welcome to the internship",
       grade: "",
       message:
-        "Olá! Usa esta plataforma para combinar reuniões e partilhar progressos.",
+        "Hello! Uses this platform to combine meetings and share progress.",
       createdAt: nowISO(),
     });
 
@@ -107,7 +107,7 @@
       id: uid(),
       ownerId: profId,
       datetimeISO: d.toISOString(),
-      desc: "Reunião inicial de acompanhamento",
+      desc: "Initial follow-up meeting",
       participantIds: [studentId, supId],
       createdAt: nowISO(),
     });
@@ -210,16 +210,16 @@
       const p = pass.value || "";
       const r = role.value || "";
 
-      if (!e || !p || !r) return showErr("Preenche email, password e papel.");
+      if (!e || !p || !r) return showErr("Fill in email, password and role.");
 
       const user = db.users.find((u) => u.email.toLowerCase() === e);
       if (!user)
         return showErr(
-          "Conta não encontrada. Usa “Não tenho conta” para contactar o admin.",
+          "Account not found. Use “I don't have an account” to contact the admin.",
         );
-      if (user.password !== p) return showErr("Password incorreta.");
+      if (user.password !== p) return showErr("Incorrect password.");
       if (user.role !== r)
-        return showErr("O papel selecionado não corresponde à tua conta.");
+        return showErr("The selected role does not match your account.");
 
       setSession(user.id);
       window.location.href = "dashboard.html";
@@ -239,15 +239,15 @@
     const subtitle = document.getElementById("subtitle");
     const rolePill = document.getElementById("rolePill");
 
-    greeting.textContent = `Olá, ${user.name}`;
+    greeting.textContent = `Hi, ${user.name}`;
     rolePill.textContent = roleLabel(user.role);
 
     subtitle.textContent =
       user.role === "student"
-        ? "Vê feedbacks, combina reuniões e fala com professor/supervisor."
+        ? "See feedbacks, combine meetings and chat with professor/supervisor."
         : user.role === "admin"
-          ? "Gere utilizadores, pedidos e supervisão geral."
-          : "Responde a mensagens, agenda reuniões e publica feedbacks.";
+          ? "Manage users, requests and supervision."
+          : "Responds to messages, schedules meetings, and posts feedback.";
 
     // Next meetings
     const nextEl = document.getElementById("nextMeetings");
@@ -262,12 +262,12 @@
       .slice(0, 3);
 
     if (!visibleEvents.length) {
-      nextEl.textContent = "Sem reuniões futuras (por enquanto).";
+      nextEl.textContent = "No future meetings (for now).";
     } else {
       nextEl.innerHTML = visibleEvents
         .map((ev) => {
           const owner = db.users.find((u) => u.id === ev.ownerId);
-          return `<div class="muted">• <b>${escapeHTML(ev.desc)}</b> — ${formatDT(ev.datetimeISO)} <span class="tiny">(criado por ${escapeHTML(owner?.name || "—")})</span></div>`;
+          return `<div class="muted">• <b>${escapeHTML(ev.desc)}</b> — ${formatDT(ev.datetimeISO)} <span class="tiny">(created by ${escapeHTML(owner?.name || "—")})</span></div>`;
         })
         .join("");
     }
@@ -287,7 +287,7 @@
             .sort(byCreatedDesc)
             .slice(0, 3);
 
-    if (!myFeedbacks.length) fbSummary.textContent = "Sem feedbacks recentes.";
+    if (!myFeedbacks.length) fbSummary.textContent = "No recent feedback.";
     else {
       fbSummary.innerHTML = myFeedbacks
         .map((fb) => {
@@ -325,11 +325,11 @@
 
     const isStaff = user.role === "teacher" || user.role === "supervisor";
     fbTitle.textContent = isStaff
-      ? "Publicar feedback / avaliação"
-      : "Os teus feedbacks / avaliações";
+      ? "Post feedback / review"
+      : "Your feedbacks / reviews";
     fbHint.textContent = isStaff
-      ? "Seleciona um aluno e envia avaliação/feedback."
-      : "Aqui aparecem feedbacks do professor e/ou supervisor.";
+      ? "Selects a student and submits assessment/feedback."
+      : "Feedback from the professor and/or supervisor appears here.";
 
     // Staff form
     if (isStaff) {
@@ -356,7 +356,7 @@
         const msg = (document.getElementById("fbMessage").value || "").trim();
 
         if (!toId || !title || !msg)
-          return showErr("Preenche aluno, título e mensagem.");
+          return showErr("Fill student, title and message.");
 
         db.feedbacks.push({
           id: uid(),
@@ -369,7 +369,7 @@
         });
         saveDB(db);
         form.reset();
-        showOk("Feedback publicado com sucesso!");
+        showOk("Feedback successfully published!");
         renderFeedbackList();
       });
     }
@@ -384,7 +384,7 @@
 
       const sorted = items.slice().sort(byCreatedDesc);
       if (!sorted.length) {
-        list.innerHTML = `<div class="muted">Sem itens para mostrar.</div>`;
+        list.innerHTML = `<div class="muted">No items to show.</div>`;
         return;
       }
 
@@ -394,7 +394,7 @@
           const to = db.users.find((u) => u.id === fb.toStudentId);
           const grade = fb.grade
             ? `<span class="badge">${escapeHTML(fb.grade)}</span>`
-            : `<span class="badge">Sem nota</span>`;
+            : `<span class="badge">No note</span>`;
           return `
           <div class="item">
             <div class="itemTop">
@@ -445,13 +445,13 @@
       showErr("");
 
       const newName = (pName.value || "").trim();
-      if (!newName) return showErr("O nome não pode estar vazio.");
+      if (!newName) return showErr("The name cannot be empty.");
 
       const u = db.users.find((x) => x.id === user.id);
       u.name = newName;
       saveDB(db);
 
-      showOk("Perfil atualizado com sucesso!");
+      showOk("Profile updated successfully!");
       hydrateSidebar(u);
     });
   };
@@ -502,7 +502,7 @@
     const render = () => {
       const peerId = peerSel.value;
       if (!peerId) {
-        box.innerHTML = `<div class="muted">Seleciona um destinatário.</div>`;
+        box.innerHTML = `<div class="muted">Selects a recipient.</div>`;
         return;
       }
 
@@ -510,7 +510,7 @@
       const msgs = getMessages(peerId);
 
       if (!msgs.length) {
-        box.innerHTML = `<div class="muted">Sem mensagens ainda. Diz “Olá”! 👋</div>`;
+        box.innerHTML = `<div class="muted">No messages yet. Say “Hello”!👋</div>`;
         return;
       }
 
@@ -539,7 +539,7 @@
 
       const peerId = peerSel.value;
       const text = (input.value || "").trim();
-      if (!peerId) return showErr("Seleciona um destinatário.");
+      if (!peerId) return showErr("Selects a recipient.");
       if (!text) return;
 
       db.messages.push({
@@ -611,7 +611,7 @@
     const renderList = () => {
       const items = visibleEvents();
       if (!items.length) {
-        list.innerHTML = `<div class="muted">Sem eventos ainda. Cria o primeiro 👇</div>`;
+        list.innerHTML = `<div class="muted">No events yet. Creates the first 👇</div>`;
         return;
       }
 
@@ -624,11 +624,11 @@
 
           const mine =
             ev.ownerId === user.id
-              ? `<span class="badge">Criado por ti</span>`
-              : `<span class="badge">Criado por ${escapeHTML(owner?.name || "—")}</span>`;
+              ? `<span class="badge">Created by you</span>`
+              : `<span class="badge">Created by ${escapeHTML(owner?.name || "—")}</span>`;
           const parts = partNames.length
-            ? `<div class="muted tiny">Participantes: ${escapeHTML(partNames.join(", "))}</div>`
-            : `<div class="muted tiny">Sem participantes</div>`;
+            ? `<div class="muted tiny">Participants: ${escapeHTML(partNames.join(", "))}</div>`
+            : `<div class="muted tiny">No participants</div>`;
 
           return `
           <div class="item">
@@ -658,10 +658,10 @@
       const desc = (eDesc.value || "").trim();
 
       if (!date || !time || !desc)
-        return showErr("Preenche data, hora e descrição.");
+        return showErr("Fills in date, time and description.");
 
       const dt = new Date(`${date}T${time}`);
-      if (isNaN(dt.getTime())) return showErr("Data/hora inválida.");
+      if (isNaN(dt.getTime())) return showErr("Invalid date/time.");
 
       const selected = [
         ...participants.querySelectorAll("input[type=checkbox]:checked"),
@@ -684,7 +684,7 @@
       eDate.valueAsDate = dd;
       eTime.value = "10:00";
 
-      showOk("Evento criado com sucesso!");
+      showOk("Event created successfully!");
       renderList();
     });
   };
@@ -717,7 +717,7 @@
       const r = role.value;
       const m = (msg.value || "").trim();
 
-      if (!n || !em || !m) return showErr("Preenche nome, email e mensagem.");
+      if (!n || !em || !m) return showErr("Fill in name, email and message.");
 
       db.contactRequests.push({
         id: uid(),
@@ -730,7 +730,7 @@
       saveDB(db);
 
       form.reset();
-      showOk("Pedido enviado ✅ O administrador verá no painel “Admin”.");
+      showOk("Order sent. The administrator will see in the dashboard “Admin”.");
     });
   };
 
@@ -808,7 +808,7 @@
 
             if (field === "name" && !value) {
               adminErr.hidden = false;
-              adminErr.textContent = "Nome não pode estar vazio.";
+              adminErr.textContent = "Name cannot be empty.";
               renderUsers();
               return;
             }
@@ -825,8 +825,7 @@
           const target = db.users.find((x) => x.id === id);
           if (!target) return;
 
-          if (!confirm(`Remover utilizador ${target.name} (${target.email})?`))
-            return;
+          if (!confirm(`Remove user ${target.name} (${target.email})?`)) return;
 
           // Remove user
           db.users = db.users.filter((x) => x.id !== id);
@@ -866,9 +865,9 @@
       const r = cuRole.value;
 
       if (!n || !em || !pw || !r)
-        return show(cuErr, "Preenche nome, email, password e papel.");
+        return show(cuErr, "Fill in name, email, password and role.");
       if (db.users.some((u) => u.email.toLowerCase() === em))
-        return show(cuErr, "Já existe um utilizador com esse email.");
+        return show(cuErr, "There is already a user with that email.");
 
       db.users.push({
         id: uid(),
@@ -881,14 +880,14 @@
       saveDB(db);
 
       createForm.reset();
-      show(cuOk, "Utilizador criado com sucesso!");
+      show(cuOk, "User created successfully!");
       renderUsers();
     });
 
     const renderContacts = () => {
       const reqs = db.contactRequests.slice().sort(byCreatedDesc);
       if (!reqs.length) {
-        contactList.innerHTML = `<div class="muted">Sem pedidos por enquanto.</div>`;
+        contactList.innerHTML = `<div class="muted">No orders for now.</div>`;
         return;
       }
       contactList.innerHTML = reqs
@@ -898,7 +897,7 @@
           <div class="itemTop">
             <div>
               <div><b>${escapeHTML(r.name)}</b> <span class="badge">${escapeHTML(r.email)}</span></div>
-              <div class="muted tiny">${formatDT(r.createdAt)} • Quer entrar como <b>${roleLabel(r.desiredRole)}</b></div>
+              <div class="muted tiny">${formatDT(r.createdAt)} • Want to enter as <b>${roleLabel(r.desiredRole)}</b></div>
             </div>
             <button class="btn danger small" data-delreq="${r.id}">🗑️</button>
           </div>
@@ -911,7 +910,7 @@
       contactList.querySelectorAll("button[data-delreq]").forEach((b) => {
         b.addEventListener("click", () => {
           const id = b.getAttribute("data-delreq");
-          if (!confirm("Apagar este pedido?")) return;
+          if (!confirm("Delete this request?")) return;
           db.contactRequests = db.contactRequests.filter((x) => x.id !== id);
           saveDB(db);
           renderContacts();

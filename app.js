@@ -400,7 +400,7 @@
             <div class="itemTop">
               <div>
                 <div><b>${escapeHTML(fb.title)}</b> ${grade}</div>
-                <div class="muted tiny">${formatDT(fb.createdAt)} • de ${escapeHTML(from?.name || "—")} para ${escapeHTML(to?.name || "—")}</div>
+                <div class="muted tiny">${formatDT(fb.createdAt)} • from ${escapeHTML(from?.name || "—")} to ${escapeHTML(to?.name || "—")}</div>
               </div>
               <span class="badge">${roleLabel(from?.role || "—")}</span>
             </div>
